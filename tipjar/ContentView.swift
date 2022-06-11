@@ -18,6 +18,12 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
+            
+                BorderedInputView {
+                    Text("$")
+                } rightLabel: {
+                    Text("%")
+                }
             List {
                 ForEach(items) { item in
                     NavigationLink {

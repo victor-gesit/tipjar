@@ -16,6 +16,10 @@
 		0D9E8C24285334DE000F79BB /* tipjarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C23285334DE000F79BB /* tipjarTests.swift */; };
 		0D9E8C2E285334DE000F79BB /* tipjarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C2D285334DE000F79BB /* tipjarUITests.swift */; };
 		0D9E8C30285334DE000F79BB /* tipjarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C2F285334DE000F79BB /* tipjarUITestsLaunchTests.swift */; };
+		0DC74250285497380035167E /* BorderedInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7424F285497380035167E /* BorderedInputView.swift */; };
+		0DC7425328549EF70035167E /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425228549EF70035167E /* Color+Extensions.swift */; };
+		0DC742552854A0340035167E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742542854A0340035167E /* Font+Extensions.swift */; };
+		0DC742592854A1CE0035167E /* roboto.black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC742582854A1CE0035167E /* roboto.black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,11 @@
 		0D9E8C29285334DE000F79BB /* tipjarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tipjarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9E8C2D285334DE000F79BB /* tipjarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipjarUITests.swift; sourceTree = "<group>"; };
 		0D9E8C2F285334DE000F79BB /* tipjarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipjarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0DC7424F285497380035167E /* BorderedInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedInputView.swift; sourceTree = "<group>"; };
+		0DC7425228549EF70035167E /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		0DC742542854A0340035167E /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		0DC742582854A1CE0035167E /* roboto.black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.black.ttf; sourceTree = "<group>"; };
+		0DC7425A2854A2280035167E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +107,9 @@
 		0D9E8C0C285334D5000F79BB /* tipjar */ = {
 			isa = PBXGroup;
 			children = (
+				0DC7425A2854A2280035167E /* Info.plist */,
+				0DC742562854A14E0035167E /* Resources */,
+				0DC7424D285496F80035167E /* UI */,
 				0D9E8C0D285334D5000F79BB /* tipjarApp.swift */,
 				0D9E8C0F285334D5000F79BB /* ContentView.swift */,
 				0D9E8C11285334DE000F79BB /* Assets.xcassets */,
@@ -131,6 +143,48 @@
 				0D9E8C2F285334DE000F79BB /* tipjarUITestsLaunchTests.swift */,
 			);
 			path = tipjarUITests;
+			sourceTree = "<group>";
+		};
+		0DC7424D285496F80035167E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7425128549EE90035167E /* Extensions */,
+				0DC7424E285497050035167E /* Sub Views */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0DC7424E285497050035167E /* Sub Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7424F285497380035167E /* BorderedInputView.swift */,
+			);
+			path = "Sub Views";
+			sourceTree = "<group>";
+		};
+		0DC7425128549EE90035167E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7425228549EF70035167E /* Color+Extensions.swift */,
+				0DC742542854A0340035167E /* Font+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0DC742562854A14E0035167E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0DC742572854A1530035167E /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0DC742572854A1530035167E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0DC742582854A1CE0035167E /* roboto.black.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +293,7 @@
 			files = (
 				0D9E8C15285334DE000F79BB /* Preview Assets.xcassets in Resources */,
 				0D9E8C12285334DE000F79BB /* Assets.xcassets in Resources */,
+				0DC742592854A1CE0035167E /* roboto.black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +321,10 @@
 				0D9E8C17285334DE000F79BB /* Persistence.swift in Sources */,
 				0D9E8C1A285334DE000F79BB /* tipjar.xcdatamodeld in Sources */,
 				0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */,
+				0DC742552854A0340035167E /* Font+Extensions.swift in Sources */,
+				0DC74250285497380035167E /* BorderedInputView.swift in Sources */,
 				0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */,
+				0DC7425328549EF70035167E /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -407,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -428,6 +486,7 @@
 				DEVELOPMENT_TEAM = 4EG6Z5662E;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tipjar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -457,6 +516,7 @@
 				DEVELOPMENT_TEAM = 4EG6Z5662E;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tipjar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
