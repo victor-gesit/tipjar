@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  tipjar
+
+  Created by Victor Idongesit on 11/06/2022.
+  
+*/
+
+"enter_amount" = "Enter Amount";
+"how_many_people" = "How many people?";
+"total_tip" = "Total tip";
+"percent_tip" = "% TIP";
+"per_person" = "Per Person";
+"take_photo_of_receipt" = "Take photo of receipt";
+"save_payment" = "Save Payment";

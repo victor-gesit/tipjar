@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum TipjarFont: String {
-    case robotoBlack = "Roboto-Black"
+    case robotoMedium = "Roboto-Medium"
 }
 
 extension Font {

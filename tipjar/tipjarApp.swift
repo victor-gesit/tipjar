@@ -13,8 +13,15 @@ struct tipjarApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(value: 20)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            HomeView()
+//            ContentView(value: 20)
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

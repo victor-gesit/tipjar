@@ -15,13 +15,13 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-    @State var value: Double
+    @State var value: Int
     @State var checked: Bool = true
     
     var body: some View {
         VStack {
             
-                BorderedInputView {
+            BorderedInputView(inputValue: .constant(20)) {
                     Text("$")
                 } rightLabel: {
                     Text("%")

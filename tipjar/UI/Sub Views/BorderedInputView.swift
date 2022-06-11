@@ -6,75 +6,87 @@
 //
 
 import SwiftUI
-import Combine
 
 struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, RightLabel: View {
     @ViewBuilder var leftLabel: LeftLabel
     @ViewBuilder var rightLabel: RightLabel
-    @State private var input: String = ""
-    init(@ViewBuilder leftLabel: () -> LeftLabel, @ViewBuilder rightLabel: () -> RightLabel) {
+    @State var inputString: String
+    @Binding private var inputValue: Double
+    var placeHolder: String
+    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel, @ViewBuilder rightLabel: () -> RightLabel) {
         self.leftLabel = leftLabel()
         self.rightLabel = rightLabel()
+        self.placeHolder = placeHolder
+        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
+        _inputString = State(initialValue: initialValue)
+        _inputValue = inputValue
     }
     
     var body: some View {
         HStack {
             leftLabel
             Spacer()
-            TextField("200.00", text: $input)
-                .font(Font.custom(from: .robotoBlack, size: 50))
+            TextField(placeHolder, text: $inputString)
+                .font(Font.custom(from: .robotoMedium, size: .FontSize.homeMainInput))
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
-                .onChange(of: input) { _ in
-                    let filtered = input.filter {"0123456789.".contains($0)}
-                    
+                .onChange(of: inputString) { _ in
+                    let filtered = inputString.filter {AppStrings.numbers.contains($0)}
                     
                     if filtered.contains(".") {
-                        if input.count == 1 {
-                            input = "0."
+                        if inputString.count == 1 {
+                            inputString = "0."
                             return
                         }
                         let splitted = filtered.split(separator: ".")
                         if splitted.count >= 2 {
                             let preDecimal = String(splitted[0])
                             let afterDecimal = String(splitted[1])
-                            input = "\(preDecimal).\(afterDecimal)"
+                            inputString = "\(preDecimal).\(afterDecimal)"
                         }
                     }
+                    inputValue = Double(inputString) ?? 0
                 }
             Spacer()
             rightLabel
         }
         .padding()
-        .frame(height: 82)
+        .frame(height: .Heights.mainInputHeight)
         .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.from(.borderGray), lineWidth: 1)
-                .shadow(color: Color.from(.borderGray), radius: 1, x: 0.5, y: 0.5)
+            RoundedRectangle(cornerRadius: .CornerRadius.mainInputCornerRadius)
+                .stroke(Color.from(.borderGray), lineWidth: .Borders.lineWidth)
+                .shadow(color: Color.from(.borderGray), radius: .Borders.shadowRadius, x: .Borders.shadowOffset, y: .Borders.shadowOffset)
         )
-        .padding()
     }
 }
 
 extension BorderedInputView where RightLabel == EmptyView   {
-    init(@ViewBuilder leftLabel: () -> LeftLabel) {
+    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel) {
         self.leftLabel = leftLabel()
         self.rightLabel = EmptyView()
+        self.placeHolder = placeHolder
+        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
+        _inputString = State(initialValue: initialValue)
+        _inputValue = inputValue
     }
 }
 
 extension BorderedInputView where LeftLabel == EmptyView {
-    init( @ViewBuilder rightLabel: () -> RightLabel) {
+    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder rightLabel: () -> RightLabel) {
         self.rightLabel = rightLabel()
         self.leftLabel = EmptyView()
+        self.placeHolder = placeHolder
+        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
+        _inputString = State(initialValue: initialValue)
+        _inputValue = inputValue
     }
 }
 
 struct BorderedInputView_Previews: PreviewProvider {
     static var previews: some View {
-        BorderedInputView(rightLabel: {
-            Text("%")
-                .font(Font.custom(from: .robotoBlack, size: 24))
+        BorderedInputView(inputValue: .constant(20), rightLabel: {
+            Text(AppStrings.percentSign)
+                .font(Font.custom(from: .robotoMedium, size: .FontSize.homeMainLabel))
         })
     }
 }
