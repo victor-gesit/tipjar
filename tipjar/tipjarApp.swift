@@ -13,7 +13,7 @@ struct tipjarApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(value: 20)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
