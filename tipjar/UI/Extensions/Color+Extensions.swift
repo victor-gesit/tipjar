@@ -10,6 +10,8 @@ import SwiftUI
 enum TipJarColor: String {
     case borderGray = "#CBCBCB"
     case valueChangeOrange = "#F27A0A"
+    case checkboxOrange = "#F1790A"
+    case checkboxGray = "#E5E5E5"
 }
 
 extension Color {

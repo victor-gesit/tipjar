@@ -21,6 +21,8 @@
 		0DC742552854A0340035167E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742542854A0340035167E /* Font+Extensions.swift */; };
 		0DC742592854A1CE0035167E /* roboto.black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC742582854A1CE0035167E /* roboto.black.ttf */; };
 		0DC7425C2854B02F0035167E /* AmountChangeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425B2854B02F0035167E /* AmountChangeButtonView.swift */; };
+		0DC7425E2854BC890035167E /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425D2854BC890035167E /* Image+Extensions.swift */; };
+		0DC742602854BD130035167E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425F2854BD130035167E /* CheckBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		0DC742582854A1CE0035167E /* roboto.black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.black.ttf; sourceTree = "<group>"; };
 		0DC7425A2854A2280035167E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0DC7425B2854B02F0035167E /* AmountChangeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountChangeButtonView.swift; sourceTree = "<group>"; };
+		0DC7425D2854BC890035167E /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		0DC7425F2854BD130035167E /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			children = (
 				0DC7424F285497380035167E /* BorderedInputView.swift */,
 				0DC7425B2854B02F0035167E /* AmountChangeButtonView.swift */,
+				0DC7425F2854BD130035167E /* CheckBox.swift */,
 			);
 			path = "Sub Views";
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			children = (
 				0DC7425228549EF70035167E /* Color+Extensions.swift */,
 				0DC742542854A0340035167E /* Font+Extensions.swift */,
+				0DC7425D2854BC890035167E /* Image+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -321,9 +327,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC7425E2854BC890035167E /* Image+Extensions.swift in Sources */,
 				0DC7425C2854B02F0035167E /* AmountChangeButtonView.swift in Sources */,
 				0D9E8C17285334DE000F79BB /* Persistence.swift in Sources */,
 				0D9E8C1A285334DE000F79BB /* tipjar.xcdatamodeld in Sources */,
+				0DC742602854BD130035167E /* CheckBox.swift in Sources */,
 				0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */,
 				0DC742552854A0340035167E /* Font+Extensions.swift in Sources */,
 				0DC74250285497380035167E /* BorderedInputView.swift in Sources */,

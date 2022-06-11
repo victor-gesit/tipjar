@@ -16,6 +16,7 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     @State var value: Double
+    @State var checked: Bool = true
     
     var body: some View {
         VStack {
@@ -25,6 +26,7 @@ struct ContentView: View {
                 } rightLabel: {
                     Text("%")
                 }
+            CheckBox(checked: $checked)
             AmountChangeButtonView(type: .increment, value: $value)
             Text("T \(value)")
 //            List {
