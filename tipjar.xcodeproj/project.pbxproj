@@ -33,6 +33,8 @@
 		0DC742702855CCCB0035167E /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7426F2855CCCB0035167E /* HistoryView.swift */; };
 		0DC742722855CD950035167E /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742712855CD950035167E /* HistoryItemView.swift */; };
 		0DC742742855D54E0035167E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742732855D54E0035167E /* Date+Extensions.swift */; };
+		0DC742762855EF0D0035167E /* SavedItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742752855EF0D0035167E /* SavedItemDetailView.swift */; };
+		0DC742782855FDEF0035167E /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742772855FDEF0035167E /* ZoomableImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		0DC7426F2855CCCB0035167E /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		0DC742712855CD950035167E /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
 		0DC742732855D54E0035167E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		0DC742752855EF0D0035167E /* SavedItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemDetailView.swift; sourceTree = "<group>"; };
+		0DC742772855FDEF0035167E /* ZoomableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 				0DC7424E285497050035167E /* Sub Views */,
 				0DC742612854C4760035167E /* HomeView.swift */,
 				0DC7426F2855CCCB0035167E /* HistoryView.swift */,
+				0DC742752855EF0D0035167E /* SavedItemDetailView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				0DC742632854D9B10035167E /* SectionLabelView.swift */,
 				0DC742692854E91E0035167E /* SaveButtonView.swift */,
 				0DC742712855CD950035167E /* HistoryItemView.swift */,
+				0DC742772855FDEF0035167E /* ZoomableImageView.swift */,
 			);
 			path = "Sub Views";
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				0DC7426A2854E91E0035167E /* SaveButtonView.swift in Sources */,
 				0DC742602854BD130035167E /* CheckBox.swift in Sources */,
 				0DC742622854C4760035167E /* HomeView.swift in Sources */,
+				0DC742782855FDEF0035167E /* ZoomableImageView.swift in Sources */,
 				0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */,
 				0DC742702855CCCB0035167E /* HistoryView.swift in Sources */,
 				0DC742742855D54E0035167E /* Date+Extensions.swift in Sources */,
@@ -375,6 +382,7 @@
 				0DC742552854A0340035167E /* Font+Extensions.swift in Sources */,
 				0DC74250285497380035167E /* BorderedInputView.swift in Sources */,
 				0DC742642854D9B10035167E /* SectionLabelView.swift in Sources */,
+				0DC742762855EF0D0035167E /* SavedItemDetailView.swift in Sources */,
 				0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */,
 				0DC7425328549EF70035167E /* Color+Extensions.swift in Sources */,
 			);

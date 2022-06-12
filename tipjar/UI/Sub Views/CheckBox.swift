@@ -17,13 +17,13 @@ struct CheckBox: View {
                 .resizable()
                 .renderingMode(.template)
                 .foregroundColor(checked ? Color.from(.checkboxOrange) : Color.from(.checkboxGray))
-                .frame(width: .Heights.checkMarkWidth, height: .Heights.checkMarkHeight)
+                .frame(width: .Dimensions.checkMarkWidth, height: .Dimensions.checkMarkHeight)
                 .overlay(
                     RoundedRectangle(cornerRadius: .CornerRadius.checkBoxCornerRadius).stroke(checked ? Color.from(.checkboxOrange) : Color.from(.checkboxGray))
-                        .frame(width: .Heights.checkboxDimension, height: .Heights.checkboxDimension)
+                        .frame(width: .Dimensions.checkboxDimension, height: .Dimensions.checkboxDimension)
                 )
         }
-        .frame(width: .Heights.checkboxDimension, height: .Heights.checkboxDimension)
+        .frame(width: .Dimensions.checkboxDimension, height: .Dimensions.checkboxDimension)
     }
     
     func toggle() {

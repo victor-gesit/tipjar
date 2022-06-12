@@ -51,7 +51,7 @@ struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, Rig
             rightLabel
         }
         .padding()
-        .frame(height: .Heights.mainInputHeight)
+        .frame(height: .Dimensions.mainInputHeight)
         .overlay(
             RoundedRectangle(cornerRadius: .CornerRadius.mainInputCornerRadius)
                 .stroke(Color.from(.borderGray), lineWidth: .Borders.lineWidth)

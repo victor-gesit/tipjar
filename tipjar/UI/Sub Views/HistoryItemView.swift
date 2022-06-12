@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryItemView: View {
     var item: HistoryItem
+    var showImage: Bool = true
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: .Padding.historyItemSpacing) {
@@ -16,15 +17,20 @@ struct HistoryItemView: View {
                     .frame(alignment: .leading)
                 HStack {
                     SectionLabelView(title: "\(AppStrings.dollarSign)\(item.amount.to2Dp)", type: .major)
+                    if(!showImage) {
+                        Spacer()
+                    }
                     SectionLabelView(title: "\(AppStrings.tip.localized): \(AppStrings.dollarSign)\(item.tip.to2Dp)")
                         .foregroundColor(Color.from(.lightGray))
                 }
             }
             Spacer()
-            Image.from(.sampleImage)
-                .resizable()
-                .frame(width: .Heights.historyItemImageDimension, height: .Heights.historyItemImageDimension)
-                .aspectRatio(contentMode: .fill)
+            if showImage {
+                Image.from(.sampleImage)
+                    .resizable()
+                    .frame(width: .Dimensions.historyItemImageDimension, height: .Dimensions.historyItemImageDimension)
+                    .aspectRatio(contentMode: .fill)
+            }
         }
     }
 }

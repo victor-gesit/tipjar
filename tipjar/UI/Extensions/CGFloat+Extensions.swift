@@ -21,13 +21,16 @@ extension CGFloat {
         static let saveButtonCornerRadius: CGFloat = 48
     }
     
-    struct Heights {
+    struct Dimensions {
         static let mainInputHeight: CGFloat = 82
         static let checkboxDimension: CGFloat = 31
         static let checkMarkHeight: CGFloat = 9
         static let checkMarkWidth: CGFloat = 13
         static let amountChangeDimention: CGFloat = 71
         static let historyItemImageDimension: CGFloat = 53
+        static let historyItemPreviewWidth: CGFloat = 300
+        static let historyItemPreviewHeight: CGFloat = 450
+        static let historyItemPreviewFooterHeight: CGFloat = 90
     }
     
     struct Padding {
@@ -36,6 +39,7 @@ extension CGFloat {
         static let historyItemSpacing: CGFloat = 4
         static let navItemPadding: CGFloat = 10
         static let navItemExtraSpace: CGFloat = 60
+        static let historyItemPreviewPadding: CGFloat = 20
     }
     
     struct Borders {

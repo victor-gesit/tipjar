@@ -25,12 +25,16 @@ struct HistoryItem {
 struct HistoryView: View {
     var historyItems: [HistoryItem] = [HistoryItem(), HistoryItem(), HistoryItem(), HistoryItem()]
     @Environment(\.presentationMode) var presentationMode
+    @State private var showDetail = false
     
     var body: some View {
         ScrollView {
             VStack {
                 ForEach(historyItems, id: \.id) { item in
                     HistoryItemView(item: item)
+                        .onTapGesture {
+                            showDetail.toggle()
+                        }
                 }
             }
         }
@@ -53,6 +57,9 @@ struct HistoryView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
             }
+        }
+        .fullScreenCover(isPresented: $showDetail) {
+            SavedItemDetailView()
         }
         .navigationViewStyle(.stack)
     }

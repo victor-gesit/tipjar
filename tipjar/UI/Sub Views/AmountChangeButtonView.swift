@@ -22,7 +22,7 @@ struct AmountChangeButtonView: View {
             performChange()
         } label: {
             Text(type.rawValue)
-                .frame(width: .Heights.amountChangeDimention, height: .Heights.amountChangeDimention)
+                .frame(width: .Dimensions.amountChangeDimention, height: .Dimensions.amountChangeDimention)
                 .font(Font.custom(from: .robotoMedium, size: .FontSize.amountChangeFontSize))
                 .foregroundColor(disable ? Color.from(.borderGray) : Color.from(.valueChangeOrange))
                 .overlay(Circle().stroke(Color.from(.borderGray)))

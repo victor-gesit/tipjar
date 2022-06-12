@@ -13,6 +13,7 @@ enum TipJarImage: String {
     case tipsHistoryIcon
     case sampleImage
     case backChevron
+    case sampleReceipt
 }
 
 extension Image {
