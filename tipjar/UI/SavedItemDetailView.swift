@@ -11,14 +11,17 @@ import PDFKit
 
 struct SavedItemDetailView: View {
     @Environment(\.dismiss) var dismiss
+    var item: HistoryItem
     var body: some View {
         VStack {
             Spacer()
             VStack {
-                ZoomableImageView(image: UIImage(named: "textyImage")!)
-                    .frame(width: .Dimensions.historyItemPreviewWidth, height: .Dimensions.historyItemPreviewHeight)
-                    .cornerRadius(.CornerRadius.mainInputCornerRadius)
-                HistoryItemView(item: HistoryItem(), showImage: false)
+                if let uiImage = item.uiImage {
+                    ZoomableImageView(image: uiImage)
+                        .frame(width: .Dimensions.historyItemPreviewWidth, height: .Dimensions.historyItemPreviewHeight)
+                        .cornerRadius(.CornerRadius.mainInputCornerRadius)
+                }
+                HistoryItemView(item: item, showImage: false)
                     .padding()
                     .frame(width: .Dimensions.historyItemPreviewWidth, height: .Dimensions.historyItemPreviewFooterHeight)
                     .background(.white)
@@ -40,7 +43,7 @@ struct SavedItemDetailView: View {
 
 struct SavedItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SavedItemDetailView()
+        SavedItemDetailView(item: HistoryItem.dummyItem)
     }
 }
 

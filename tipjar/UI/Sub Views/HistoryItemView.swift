@@ -25,18 +25,20 @@ struct HistoryItemView: View {
                 }
             }
             Spacer()
-            if showImage {
-                Image.from(.sampleImage)
+            if let image = item.image, showImage {
+                image
                     .resizable()
                     .frame(width: .Dimensions.historyItemImageDimension, height: .Dimensions.historyItemImageDimension)
+                    .cornerRadius(.CornerRadius.mainInputCornerRadius)
                     .aspectRatio(contentMode: .fill)
             }
         }
+        .frame(height: .Dimensions.historyItemRowHeight)
     }
 }
 
 struct HistoryItemView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryItemView(item: HistoryItem())
+        HistoryItemView(item: HistoryItem.dummyItem)
     }
 }

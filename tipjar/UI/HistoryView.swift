@@ -7,32 +7,44 @@
 
 import SwiftUI
 
-struct HistoryItem {
+struct HistoryItem: Identifiable {
     var id = UUID()
     var date: Date
     var amount: Double
     var tip: Double
-    var image: Data
+    var imageData: Data?
     
-    init() {
-        date = Date()
-        amount = 20.2
-        tip = 2.5
-        image = Data()
+    var uiImage: UIImage?
+    var image: Image?
+    
+    init(date: Date, amount: Double, tip: Double, imageData: Data?) {
+        self.date = date
+        self.amount = amount
+        self.tip = tip
+        self.imageData = imageData
+        if let imageData = imageData,
+           let uiImage = UIImage(data: imageData) {
+            self.uiImage = uiImage
+            self.image = Image(uiImage: uiImage)
+        }
     }
+    
+    static let dummyItem: HistoryItem = HistoryItem(date: Date(), amount: 20.00, tip: 2.0, imageData: UIImage.from(.textyImage)?.jpegData(compressionQuality: .Conversions.imageCompression))
 }
 
 struct HistoryView: View {
-    var historyItems: [HistoryItem] = [HistoryItem(), HistoryItem(), HistoryItem(), HistoryItem()]
+    var historyItems: [HistoryItem]
     @Environment(\.presentationMode) var presentationMode
     @State private var showDetail = false
+    @State private var selectedHistoryItem: HistoryItem?
     
     var body: some View {
-        ScrollView {
-            VStack {
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: .Dimensions.historySpacing) {
                 ForEach(historyItems, id: \.id) { item in
                     HistoryItemView(item: item)
                         .onTapGesture {
+                            selectedHistoryItem = item
                             showDetail.toggle()
                         }
                 }
@@ -41,6 +53,7 @@ struct HistoryView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.leading, .Padding.sidePadding)
         .padding(.trailing, .Padding.sidePadding)
+        
         .toolbar {
             ToolbarItem(placement: .principal) {
                 SectionLabelView(title: AppStrings.savedPayments.localized)
@@ -58,8 +71,8 @@ struct HistoryView: View {
                     }
             }
         }
-        .fullScreenCover(isPresented: $showDetail) {
-            SavedItemDetailView()
+        .fullScreenCover(item: $selectedHistoryItem) { item in
+            SavedItemDetailView(item: item)
         }
         .navigationViewStyle(.stack)
     }
@@ -67,6 +80,6 @@ struct HistoryView: View {
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        HistoryView(historyItems: [])
     }
 }

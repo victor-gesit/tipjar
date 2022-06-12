@@ -35,6 +35,7 @@
 		0DC742742855D54E0035167E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742732855D54E0035167E /* Date+Extensions.swift */; };
 		0DC742762855EF0D0035167E /* SavedItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742752855EF0D0035167E /* SavedItemDetailView.swift */; };
 		0DC742782855FDEF0035167E /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742772855FDEF0035167E /* ZoomableImageView.swift */; };
+		0DC7427A28560D730035167E /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7427928560D730035167E /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		0DC742732855D54E0035167E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		0DC742752855EF0D0035167E /* SavedItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemDetailView.swift; sourceTree = "<group>"; };
 		0DC742772855FDEF0035167E /* ZoomableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableImageView.swift; sourceTree = "<group>"; };
+		0DC7427928560D730035167E /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				0DC742692854E91E0035167E /* SaveButtonView.swift */,
 				0DC742712855CD950035167E /* HistoryItemView.swift */,
 				0DC742772855FDEF0035167E /* ZoomableImageView.swift */,
+				0DC7427928560D730035167E /* ImagePickerView.swift */,
 			);
 			path = "Sub Views";
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				0DC742722855CD950035167E /* HistoryItemView.swift in Sources */,
 				0DC742682854DB170035167E /* CGFloat+Extensions.swift in Sources */,
 				0DC7425C2854B02F0035167E /* AmountChangeButtonView.swift in Sources */,
+				0DC7427A28560D730035167E /* ImagePickerView.swift in Sources */,
 				0D9E8C17285334DE000F79BB /* Persistence.swift in Sources */,
 				0D9E8C1A285334DE000F79BB /* tipjar.xcdatamodeld in Sources */,
 				0DC7426A2854E91E0035167E /* SaveButtonView.swift in Sources */,
@@ -547,6 +551,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tipjar/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "TipJar needs the camera to take pictures of receipts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -577,6 +582,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tipjar/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "TipJar needs the camera to take pictures of receipts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

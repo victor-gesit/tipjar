@@ -15,6 +15,8 @@ extension HomeView {
         @Published private(set) var totalTip: Double = 10
         @Published private(set) var perPersonTip: Double = 10
         @Published var takeReceiptOfPhoto: Bool = false
+        @Published var imageData: Data?
+        @Published var history: [HistoryItem] = [HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem]
         
         func computeTotal() {
             let total = percentTip * amount * Double(numberOfPeople) / 100
@@ -22,12 +24,21 @@ extension HomeView {
             self.totalTip = total
             self.perPersonTip = perPersonTip
         }
+        
+        func addHistoryItem() {
+            let item = HistoryItem(date: Date(), amount: amount, tip: totalTip, imageData: imageData)
+            history.append(item)
+        }
     }
 }
 
 struct HomeView: View {
     @StateObject var viewModel: ViewModel = ViewModel()
     @State private var goToHistory = false
+    @State var takePicture: Bool = false
+    @State var receiptImage: UIImage?
+    
+    var history: [HistoryItem] = []
     
     var body: some View {
         NavigationView {
@@ -87,7 +98,7 @@ struct HomeView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(
-                        NavigationLink(destination: HistoryView(), isActive: $goToHistory) {
+                        NavigationLink(destination: HistoryView(historyItems: viewModel.history), isActive: $goToHistory) {
                           EmptyView()
                         }
                     )
@@ -123,15 +134,34 @@ struct HomeView: View {
                             .padding(.leading, .Padding.defaultPadding)
                     }
                     
-                    SaveButtonView()
+                    SaveButtonView(saveAction: saveReceipt)
                 }
             }
             .padding(.Padding.sidePadding)
+            .sheet(isPresented: $takePicture) {
+                imagePicker
+            }
         }
     }
     
     func showHistory() {
         goToHistory = true
+    }
+    
+    func saveReceipt() {
+        if(viewModel.takeReceiptOfPhoto) {
+            takePicture = true
+        } else {
+            self.viewModel.addHistoryItem()
+        }
+    }
+    
+    var imagePicker: some View {
+        ImagePickerView(sourceType: .camera) {image in
+            self.viewModel.imageData = image.jpegData(compressionQuality: .Conversions.imageCompression)
+            self.receiptImage = image
+            self.viewModel.addHistoryItem()
+        }
     }
 }
 

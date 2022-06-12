@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SaveButtonView: View {
+    var saveAction: () -> Void
     var body: some View {
         Button {
             savePayment()
@@ -25,12 +26,14 @@ struct SaveButtonView: View {
     }
     
     func savePayment() {
-        
+        saveAction()
     }
 }
 
 struct SaveButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveButtonView()
+        SaveButtonView {
+            
+        }
     }
 }

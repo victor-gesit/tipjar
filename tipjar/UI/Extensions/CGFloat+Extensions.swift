@@ -28,9 +28,11 @@ extension CGFloat {
         static let checkMarkWidth: CGFloat = 13
         static let amountChangeDimention: CGFloat = 71
         static let historyItemImageDimension: CGFloat = 53
+        static let historyItemRowHeight: CGFloat = 54
         static let historyItemPreviewWidth: CGFloat = 300
         static let historyItemPreviewHeight: CGFloat = 450
         static let historyItemPreviewFooterHeight: CGFloat = 90
+        static let historySpacing: CGFloat = 44
     }
     
     struct Padding {
@@ -46,6 +48,10 @@ extension CGFloat {
         static let lineWidth: CGFloat = 1
         static let shadowOffset: CGFloat = 0.5
         static let shadowRadius: CGFloat = 1
+    }
+    
+    struct Conversions {
+        static let imageCompression = 0.5
     }
 }
 
