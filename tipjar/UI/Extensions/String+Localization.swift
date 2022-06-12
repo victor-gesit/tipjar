@@ -15,6 +15,8 @@ enum AppStrings: String {
     case takePhoto = "take_photo_of_receipt"
     case savePayment = "save_payment"
     case percentTip = "percent_tip"
+    case tip = "tip"
+    case savedPayments = "saved_payments"
     
     var localized: String {
         return NSLocalizedString(self.rawValue, comment: "")

@@ -27,11 +27,15 @@ extension CGFloat {
         static let checkMarkHeight: CGFloat = 9
         static let checkMarkWidth: CGFloat = 13
         static let amountChangeDimention: CGFloat = 71
+        static let historyItemImageDimension: CGFloat = 53
     }
     
     struct Padding {
         static let defaultPadding: CGFloat = 12
         static let sidePadding: CGFloat = 24
+        static let historyItemSpacing: CGFloat = 4
+        static let navItemPadding: CGFloat = 10
+        static let navItemExtraSpace: CGFloat = 60
     }
     
     struct Borders {

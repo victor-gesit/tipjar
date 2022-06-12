@@ -13,6 +13,7 @@ enum TipJarColor: String {
     case checkboxOrange = "#F1790A"
     case checkboxGray = "#E5E5E5"
     case saveButtonGradientStop = "#D26E11"
+    case lightGray = "#7D7D7D"
 }
 
 extension Color {

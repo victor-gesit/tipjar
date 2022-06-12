@@ -27,63 +27,96 @@ extension HomeView {
 
 struct HomeView: View {
     @StateObject var viewModel: ViewModel = ViewModel()
+    @State private var goToHistory = false
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    SectionLabelView(title: AppStrings.enterAmount.localized)
-                    
-                    BorderedInputView(inputValue: $viewModel.amount, leftLabel: {
-                        SectionLabelView(title: AppStrings.dollarSign, type: .major)
-                    })
-                    .onReceive(viewModel.$amount, perform: { amount in
-                        viewModel.computeTotal()
-                    })
-                    .padding(.bottom, .Padding.defaultPadding)
-                    SectionLabelView(title: AppStrings.howManyPeople.localized)
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        SectionLabelView(title: AppStrings.enterAmount.localized)
+                        
+                        BorderedInputView(inputValue: $viewModel.amount, leftLabel: {
+                            SectionLabelView(title: AppStrings.dollarSign, type: .major)
+                        })
+                        .onReceive(viewModel.$amount, perform: { amount in
+                            viewModel.computeTotal()
+                        })
                         .padding(.bottom, .Padding.defaultPadding)
-                    
-                    HStack {
-                        AmountChangeButtonView(type: .increment, value: $viewModel.numberOfPeople)
-                        Spacer()
-                        Text("\(viewModel.numberOfPeople)")
-                            .font(Font.custom(from: .robotoMedium, size: .FontSize.amountChangeFontSize))
-                            .onReceive(viewModel.$numberOfPeople, perform: { _ in
-                                viewModel.computeTotal()
-                            })
-                        Spacer()
-                        AmountChangeButtonView(type: .decrement, value: $viewModel.numberOfPeople)
-                    }
-                    .padding(.bottom, .Padding.defaultPadding)
-                    Text(AppStrings.percentTip.localized)
-                        .padding(.bottom, .Padding.defaultPadding)
-                    
-                    BorderedInputView(inputValue: $viewModel.percentTip, placeHolder: AppStrings.ten, rightLabel: {
-                        SectionLabelView(title: AppStrings.percentSign, type: .major)
-                    })
-                    .padding(.bottom, .Padding.defaultPadding)
-                    .onReceive(viewModel.$percentTip, perform: { _ in
-                        viewModel.computeTotal()
-                    })
-                    
-                    VStack {
+                        SectionLabelView(title: AppStrings.howManyPeople.localized)
+                        
                         HStack {
-                            SectionLabelView(title: AppStrings.totalTip.localized)
-                                Spacer()
-                            SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
+                            AmountChangeButtonView(type: .increment, value: $viewModel.numberOfPeople)
+                            Spacer()
+                            Text("\(viewModel.numberOfPeople)")
+                                .font(Font.custom(from: .robotoMedium, size: .FontSize.amountChangeFontSize))
+                                .onReceive(viewModel.$numberOfPeople, perform: { _ in
+                                    viewModel.computeTotal()
+                                })
+                            Spacer()
+                            AmountChangeButtonView(type: .decrement, value: $viewModel.numberOfPeople)
+                        }
+                        .padding(.bottom, .Padding.defaultPadding)
+                        Text(AppStrings.percentTip.localized)
+                            .padding(.bottom, .Padding.defaultPadding)
+                        
+                        BorderedInputView(inputValue: $viewModel.percentTip, placeHolder: AppStrings.ten, rightLabel: {
+                            SectionLabelView(title: AppStrings.percentSign, type: .major)
+                        })
+                        .padding(.bottom, .Padding.defaultPadding)
+                        .onReceive(viewModel.$percentTip, perform: { _ in
+                            viewModel.computeTotal()
+                        })
+                        
+                        VStack {
+                            HStack {
+                                SectionLabelView(title: AppStrings.totalTip.localized)
+                                    Spacer()
+                                SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
+                                        .padding(.bottom, .Padding.defaultPadding)
+                            }
+                            HStack {
+                                SectionLabelView(title: AppStrings.perPerson.localized, type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
+                                    Spacer()
+                                SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
+                                    .padding(.bottom, .Padding.defaultPadding)
+                            }
+                            .padding(.bottom, .Padding.defaultPadding)
                         }
-                        HStack {
-                            SectionLabelView(title: AppStrings.perPerson.localized, type: .major)
-                                .padding(.bottom, .Padding.defaultPadding)
-                                Spacer()
-                            SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
-                                .padding(.bottom, .Padding.defaultPadding)
-                        }
-                        .padding(.bottom, .Padding.defaultPadding)
                     }
-                    Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(
+                        NavigationLink(destination: HistoryView(), isActive: $goToHistory) {
+                          EmptyView()
+                        }
+                    )
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            Image.from(.tipjarLogo)
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .primaryAction) {
+                            Button {
+                                showHistory()
+                            } label: {
+                                Image.from(.tipsHistoryIcon)
+                                    .padding(.top, .Padding.navItemPadding)
+                                    .padding(.bottom, .Padding.navItemPadding)
+                                    .padding(.leading, .Padding.navItemExtraSpace)
+                            }
+                        }
+                    }
+                }
+                .frame(maxHeight: .infinity)
+                .navigationViewStyle(.stack)
+                .navigationBarTitleDisplayMode(.inline)
+                .onTapGesture {
+                    UIApplication.shared.endEditing()
+                }
+                
+                VStack(alignment: .leading){
                     HStack {
                         CheckBox(checked: $viewModel.takeReceiptOfPhoto)
                         SectionLabelView(title: AppStrings.takePhoto.localized)
@@ -92,32 +125,13 @@ struct HomeView: View {
                     
                     SaveButtonView()
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.leading, .Padding.sidePadding)
-                .padding(.trailing, .Padding.sidePadding)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Image.from(.tipjarLogo)
-                    }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button {
-                            showHistory()
-                        } label: {
-                            Image.from(.tipsHistoryIcon)
-                        }
-                    }
-                }
             }
-            .onTapGesture {
-                UIApplication.shared.endEditing()
-            }
+            .padding(.Padding.sidePadding)
         }
     }
     
     func showHistory() {
-        // Show History
+        goToHistory = true
     }
 }
 
