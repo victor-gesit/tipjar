@@ -21,7 +21,6 @@ extension HomeView {
         @Published var imageData: Data?
         @Published var showValidationErrors: Bool = false
         
-        @Published var history: [HistoryItem] = [HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem]
         var context: NSManagedObjectContext?
         
         func computeTotal() {
@@ -35,6 +34,8 @@ extension HomeView {
             guard let context = context else {
                 return
             }
+            
+            if !validateInputs() { return }
 
             let item = TipEntry(context: context)
             item.id = UUID()
