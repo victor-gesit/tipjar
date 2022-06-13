@@ -51,9 +51,3 @@ struct HistoryView: View {
         .navigationViewStyle(.stack)
     }
 }
-
-//struct HistoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HistoryView(historyItems: [])
-//    }
-//}

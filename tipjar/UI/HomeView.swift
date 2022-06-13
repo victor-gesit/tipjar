@@ -26,7 +26,7 @@ struct HomeView: View {
                         LabelView(title: AppStrings.enterAmount.localized)
 
                         BorderedInputView(inputValue: $viewModel.amount, inputString: $viewModel.amountString, validateInput: $viewModel.showValidationErrors, leftLabel: {
-                            LabelView(title: AppStrings.dollarSign, type: .major)
+                            LabelView(title: viewModel.currency.symbol, type: .major)
                         })
                         .onReceive(viewModel.$amount, perform: { _ in
                             viewModel.computeTotal()
@@ -62,14 +62,14 @@ struct HomeView: View {
                             HStack {
                                 LabelView(title: AppStrings.totalTip.localized)
                                     Spacer()
-                                LabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
+                                LabelView(title: "\(viewModel.currency.symbol)\(viewModel.totalTip.to2Dp)")
                                         .padding(.bottom, .Padding.defaultPadding)
                             }
                             HStack {
                                 LabelView(title: AppStrings.perPerson.localized, type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
                                     Spacer()
-                                LabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
+                                LabelView(title: "\(viewModel.currency.symbol)\(viewModel.perPersonTip.to2Dp)", type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
                             }
                             .padding(.bottom, .Padding.defaultPadding)
@@ -98,6 +98,28 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                viewModel.changeCurrency = true
+                            } label: {
+                                Menu {
+                                    Picker(selection: $viewModel.currency) {
+                                        ForEach(Currency.allCases, id: \.self) {
+                                            LabelView(title: $0.rawValue.capitalized, type: .major)
+                                                .padding(.top, .Padding.navItemPadding)
+                                                .padding(.bottom, .Padding.navItemPadding)
+                                                .padding(.trailing, .Padding.navItemExtraSpace)
+                                        }
+                                    } label: {}
+                                } label: {
+                                    Text(viewModel.currency.symbol)
+                                        .font(Font.custom(from: .robotoMedium, size: .FontSize.homeMainLabel))
+                                        .foregroundColor(Color.from(.saveButtonGradientStop))
+                                }
+                            }
+                        }
+                    }
                 }
                 .frame(maxHeight: .infinity)
                 .navigationViewStyle(.stack)
@@ -106,14 +128,16 @@ struct HomeView: View {
                     UIApplication.shared.endEditing()
                 }
                 
-                VStack(alignment: .leading){
-                    HStack {
-                        CheckBox(checked: $viewModel.takeReceiptOfPhoto)
-                        LabelView(title: AppStrings.takePhoto.localized)
-                            .padding(.leading, .Padding.defaultPadding)
+                ZStack {
+                    VStack(alignment: .leading){
+                        HStack {
+                            CheckBox(checked: $viewModel.takeReceiptOfPhoto)
+                            LabelView(title: AppStrings.takePhoto.localized)
+                                .padding(.leading, .Padding.defaultPadding)
+                        }
+                        
+                        SaveButtonView(saveAction: saveReceipt)
                     }
-                    
-                    SaveButtonView(saveAction: saveReceipt)
                 }
             }
             .padding(.Padding.sidePadding)

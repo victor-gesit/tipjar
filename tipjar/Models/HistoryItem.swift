@@ -13,16 +13,18 @@ struct HistoryItem: Identifiable {
     var amount: Double
     var tip: Double
     var imageData: Data?
+    var currency: Currency
     
     var uiImage: UIImage?
     var image: Image?
     
-    init(id: UUID = UUID(), date: Date, amount: Double, tip: Double, imageData: Data?) {
+    init(id: UUID = UUID(), date: Date, amount: Double, tip: Double, imageData: Data?, currency: Currency = .dollar) {
         self.id = id
         self.date = date
         self.amount = amount
         self.tip = tip
         self.imageData = imageData
+        self.currency = currency
         if let imageData = imageData,
            let uiImage = UIImage(data: imageData) {
             self.uiImage = uiImage

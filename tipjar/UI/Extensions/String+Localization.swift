@@ -27,6 +27,8 @@ enum AppStrings: String {
     static let ten = "10"
     static let oneHundred = "100.00"
     static let percentSign = "%"
-    static let dollarSign = "$"
+    static let dollarSymbol = "$"
+    static let euroSymbol = "€"
+    static let poundsSymbol = "£"
     static let numbers = "9876543210."
 }
