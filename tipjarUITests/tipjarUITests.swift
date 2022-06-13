@@ -8,26 +8,48 @@
 import XCTest
 
 class tipjarUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testCanAddTipItem() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let amountTextField = app.textFields["100.00"]
+        let incrementButton = app.buttons["+"]
+        let decrementButton = app.buttons["-"]
+        let scrollViewsQuery = XCUIApplication().scrollViews
+        let savePaymentButton = app.buttons["Save Payment"]
+        let tipPercentText = scrollViewsQuery.otherElements.textFields["10"]
+        let totalTipText = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "$60.0").element
+        let perPersonTipText = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "$20.0").element
+        let tipLabel = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "Tip: $60.0").element
+        let enterAmountElement = scrollViewsQuery.otherElements.containing(.staticText, identifier:"Enter Amount").element
+        
+        amountTextField.tap()
+        amountTextField.typeText("200")
+        
+        incrementButton.tap()
+        incrementButton.tap()
+        incrementButton.tap()
+        
+        decrementButton.tap()
+        
+        enterAmountElement.tap()
+        
+        tipPercentText.tap()
+        app.clearTextOnElement(tipPercentText)
+        tipPercentText.typeText("10")
+        
+        sleep(1)
+        enterAmountElement.tap()
+        
+        
+        XCTAssertTrue(totalTipText.waitForExistence(timeout: 1))
+        XCTAssertTrue(perPersonTipText.waitForExistence(timeout: 1))
+        
+        sleep(1)
+        
+        savePaymentButton.tap()
+        
+        XCTAssertTrue(tipLabel.waitForExistence(timeout: 2)) // Visible on next page
+        
     }
 
     func testLaunchPerformance() throws {
@@ -37,5 +59,12 @@ class tipjarUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+}
+
+extension XCUIApplication {
+    func clearTextOnElement(_ element: XCUIElement) {
+        element.doubleTap()
+        menuItems["Cut"].tap()
     }
 }
