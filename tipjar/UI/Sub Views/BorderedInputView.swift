@@ -10,15 +10,15 @@ import SwiftUI
 struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, RightLabel: View {
     @ViewBuilder var leftLabel: LeftLabel
     @ViewBuilder var rightLabel: RightLabel
-    @State var inputString: String
+    @Binding var inputString: String
     @Binding private var inputValue: Double
     var placeHolder: String
-    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel, @ViewBuilder rightLabel: () -> RightLabel) {
+    
+    init(inputValue: Binding<Double>, inputString: Binding<String>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel, @ViewBuilder rightLabel: () -> RightLabel) {
         self.leftLabel = leftLabel()
         self.rightLabel = rightLabel()
         self.placeHolder = placeHolder
-        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
-        _inputString = State(initialValue: initialValue)
+        _inputString = inputString
         _inputValue = inputValue
     }
     
@@ -61,30 +61,28 @@ struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, Rig
 }
 
 extension BorderedInputView where RightLabel == EmptyView   {
-    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel) {
+    init(inputValue: Binding<Double>, inputString: Binding<String>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel) {
         self.leftLabel = leftLabel()
         self.rightLabel = EmptyView()
         self.placeHolder = placeHolder
-        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
-        _inputString = State(initialValue: initialValue)
+        _inputString = inputString
         _inputValue = inputValue
     }
 }
 
 extension BorderedInputView where LeftLabel == EmptyView {
-    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder rightLabel: () -> RightLabel) {
+    init(inputValue: Binding<Double>, inputString: Binding<String>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder rightLabel: () -> RightLabel) {
         self.rightLabel = rightLabel()
         self.leftLabel = EmptyView()
         self.placeHolder = placeHolder
-        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
-        _inputString = State(initialValue: initialValue)
+        _inputString = inputString
         _inputValue = inputValue
     }
 }
 
 struct BorderedInputView_Previews: PreviewProvider {
     static var previews: some View {
-        BorderedInputView(inputValue: .constant(20), rightLabel: {
+        BorderedInputView(inputValue: .constant(20), inputString: .constant(""), rightLabel: {
             Text(AppStrings.percentSign)
                 .font(Font.custom(from: .robotoMedium, size: .FontSize.homeMainLabel))
         })

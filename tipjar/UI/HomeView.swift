@@ -7,31 +7,6 @@
 
 import SwiftUI
 
-extension HomeView {
-    @MainActor class ViewModel: ObservableObject {
-        @Published var amount: Double = 0
-        @Published var numberOfPeople: Int = 1
-        @Published var percentTip: Double = 10
-        @Published private(set) var totalTip: Double = 10
-        @Published private(set) var perPersonTip: Double = 10
-        @Published var takeReceiptOfPhoto: Bool = false
-        @Published var imageData: Data?
-        @Published var history: [HistoryItem] = [HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem]
-        
-        func computeTotal() {
-            let total = percentTip * amount * Double(numberOfPeople) / 100
-            let perPersonTip = percentTip * amount / 100
-            self.totalTip = total
-            self.perPersonTip = perPersonTip
-        }
-        
-        func addHistoryItem() {
-            let item = HistoryItem(date: Date(), amount: amount, tip: totalTip, imageData: imageData)
-            history.append(item)
-        }
-    }
-}
-
 struct HomeView: View {
     @StateObject var viewModel: ViewModel = ViewModel()
     @State private var goToHistory = false
@@ -39,6 +14,10 @@ struct HomeView: View {
     @State var receiptImage: UIImage?
     
     var history: [HistoryItem] = []
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \TipEntry.date, ascending: true)]) var savedEntries: FetchedResults<TipEntry>
+    @Environment(\.managedObjectContext) var context
+    
     
     var body: some View {
         NavigationView {
@@ -47,10 +26,10 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         SectionLabelView(title: AppStrings.enterAmount.localized)
                         
-                        BorderedInputView(inputValue: $viewModel.amount, leftLabel: {
+                        BorderedInputView(inputValue: $viewModel.amount, inputString: $viewModel.amountString, leftLabel: {
                             SectionLabelView(title: AppStrings.dollarSign, type: .major)
                         })
-                        .onReceive(viewModel.$amount, perform: { amount in
+                        .onReceive(viewModel.$amount, perform: { _ in
                             viewModel.computeTotal()
                         })
                         .padding(.bottom, .Padding.defaultPadding)
@@ -71,7 +50,7 @@ struct HomeView: View {
                         Text(AppStrings.percentTip.localized)
                             .padding(.bottom, .Padding.defaultPadding)
                         
-                        BorderedInputView(inputValue: $viewModel.percentTip, placeHolder: AppStrings.ten, rightLabel: {
+                        BorderedInputView(inputValue: $viewModel.percentTip, inputString: $viewModel.percentTipString, placeHolder: AppStrings.ten, rightLabel: {
                             SectionLabelView(title: AppStrings.percentSign, type: .major)
                         })
                         .padding(.bottom, .Padding.defaultPadding)
@@ -98,7 +77,7 @@ struct HomeView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(
-                        NavigationLink(destination: HistoryView(historyItems: viewModel.history), isActive: $goToHistory) {
+                        NavigationLink(destination: HistoryView(historyItems: savedEntries), isActive: $goToHistory) {
                           EmptyView()
                         }
                     )
@@ -141,6 +120,9 @@ struct HomeView: View {
             .sheet(isPresented: $takePicture) {
                 imagePicker
             }
+            .onAppear {
+                viewModel.context = context
+            }
         }
     }
     
@@ -153,6 +135,7 @@ struct HomeView: View {
             takePicture = true
         } else {
             self.viewModel.addHistoryItem()
+            showHistory()
         }
     }
     
@@ -161,6 +144,7 @@ struct HomeView: View {
             self.viewModel.imageData = image.jpegData(compressionQuality: .Conversions.imageCompression)
             self.receiptImage = image
             self.viewModel.addHistoryItem()
+            showHistory()
         }
     }
 }

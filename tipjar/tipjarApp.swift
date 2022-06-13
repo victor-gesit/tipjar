@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct tipjarApp: App {
-    let persistenceController = PersistenceController.shared
+    private var dataController = DataController.shared
 
     var body: some Scene {
         WindowGroup {
             HomeView()
-//            ContentView(value: 20)
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

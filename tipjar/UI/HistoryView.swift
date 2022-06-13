@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HistoryItem: Identifiable {
-    var id = UUID()
+    var id: UUID
     var date: Date
     var amount: Double
     var tip: Double
@@ -17,7 +18,8 @@ struct HistoryItem: Identifiable {
     var uiImage: UIImage?
     var image: Image?
     
-    init(date: Date, amount: Double, tip: Double, imageData: Data?) {
+    init(id: UUID = UUID(), date: Date, amount: Double, tip: Double, imageData: Data?) {
+        self.id = id
         self.date = date
         self.amount = amount
         self.tip = tip
@@ -33,7 +35,7 @@ struct HistoryItem: Identifiable {
 }
 
 struct HistoryView: View {
-    var historyItems: [HistoryItem]
+    var historyItems: FetchedResults<TipEntry>
     @Environment(\.presentationMode) var presentationMode
     @State private var showDetail = false
     @State private var selectedHistoryItem: HistoryItem?
@@ -42,9 +44,9 @@ struct HistoryView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: .Dimensions.historySpacing) {
                 ForEach(historyItems, id: \.id) { item in
-                    HistoryItemView(item: item)
+                    HistoryItemView(item: item.historyItem)
                         .onTapGesture {
-                            selectedHistoryItem = item
+                            selectedHistoryItem = item.historyItem
                             showDetail.toggle()
                         }
                 }
@@ -78,8 +80,8 @@ struct HistoryView: View {
     }
 }
 
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView(historyItems: [])
-    }
-}
+//struct HistoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HistoryView(historyItems: [])
+//    }
+//}
