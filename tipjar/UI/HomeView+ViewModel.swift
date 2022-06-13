@@ -77,9 +77,17 @@ enum Currency: String, CaseIterable {
     
     var symbol: String {
         switch self {
-        case .dollar: return AppStrings.dollarSymbol
-        case .pounds: return AppStrings.poundsSymbol
-        case .euros: return AppStrings.euroSymbol
+        case .dollar: return AppStrings.dollarSymbol.localized
+        case .pounds: return AppStrings.poundsSymbol.localized
+        case .euros: return AppStrings.euroSymbol.localized
+        }
+    }
+    
+    var localized: String {
+        switch self {
+        case .dollar: return AppStrings.dollarString.localized
+        case .pounds: return AppStrings.poundsString.localized
+        case .euros: return AppStrings.eurosString.localized
         }
     }
 }

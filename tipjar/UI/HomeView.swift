@@ -106,7 +106,7 @@ struct HomeView: View {
                                 Menu {
                                     Picker(selection: $viewModel.currency) {
                                         ForEach(Currency.allCases, id: \.self) {
-                                            LabelView(title: $0.rawValue.capitalized, type: .major)
+                                            LabelView(title: $0.localized.capitalized, type: .major)
                                                 .padding(.top, .Padding.navItemPadding)
                                                 .padding(.bottom, .Padding.navItemPadding)
                                                 .padding(.trailing, .Padding.navItemExtraSpace)
