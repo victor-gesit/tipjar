@@ -13,6 +13,8 @@
 		0D8D2A332856C39C00982C63 /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A322856C39C00982C63 /* HomeView+ViewModel.swift */; };
 		0D8D2A372857678B00982C63 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A362857678B00982C63 /* HistoryItem.swift */; };
 		0D8D2A382857C00000982C63 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D2A3A2857C00000982C63 /* Localizable.strings */; };
+		0D8D2A3C2857C4A100982C63 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7426D2855096B0035167E /* String+Localization.swift */; };
+		0D8D2A3D2857C59B00982C63 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D2A3A2857C00000982C63 /* Localizable.strings */; };
 		0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C0D285334D5000F79BB /* tipjarApp.swift */; };
 		0D9E8C12285334DE000F79BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E8C11285334DE000F79BB /* Assets.xcassets */; };
 		0D9E8C15285334DE000F79BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E8C14285334DE000F79BB /* Preview Assets.xcassets */; };
@@ -385,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8D2A3D2857C59B00982C63 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8D2A3C2857C4A100982C63 /* String+Localization.swift in Sources */,
 				0D9E8C30285334DE000F79BB /* tipjarUITestsLaunchTests.swift in Sources */,
 				0D9E8C2E285334DE000F79BB /* tipjarUITests.swift in Sources */,
 			);

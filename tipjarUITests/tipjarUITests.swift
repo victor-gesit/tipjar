@@ -16,7 +16,6 @@ class tipjarUITests: XCTestCase {
         let decrementButton = app.buttons["-"]
         let scrollViewsQuery = XCUIApplication().scrollViews
         let savePaymentButton = app.buttons["Save Payment"]
-        let tipPercentText = scrollViewsQuery.otherElements.textFields["10"]
         let totalTipText = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "$60.0").element
         let perPersonTipText = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "$20.0").element
         let tipLabel = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "Tip: $60.0").element
@@ -33,10 +32,6 @@ class tipjarUITests: XCTestCase {
         
         enterAmountElement.tap()
         
-        tipPercentText.tap()
-        app.clearTextOnElement(tipPercentText)
-        tipPercentText.typeText("10")
-        
         sleep(1)
         enterAmountElement.tap()
         
@@ -50,12 +45,5 @@ class tipjarUITests: XCTestCase {
         
         XCTAssertTrue(tipLabel.waitForExistence(timeout: 2)) // Visible on next page
         
-    }
-}
-
-extension XCUIApplication {
-    func clearTextOnElement(_ element: XCUIElement) {
-        element.doubleTap()
-        menuItems["Cut"].tap()
     }
 }
