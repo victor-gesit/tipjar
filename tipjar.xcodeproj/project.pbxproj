@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D8D2A25285696B100982C63 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A24285696B100982C63 /* DataController.swift */; };
+		0D8D2A302856A16100982C63 /* TipEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A2E2856A16100982C63 /* TipEntry+CoreDataClass.swift */; };
+		0D8D2A312856A16100982C63 /* TipEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A2F2856A16100982C63 /* TipEntry+CoreDataProperties.swift */; };
+		0D8D2A332856C39C00982C63 /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A322856C39C00982C63 /* HomeView+ViewModel.swift */; };
 		0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C0D285334D5000F79BB /* tipjarApp.swift */; };
 		0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C0F285334D5000F79BB /* ContentView.swift */; };
 		0D9E8C12285334DE000F79BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E8C11285334DE000F79BB /* Assets.xcassets */; };
 		0D9E8C15285334DE000F79BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E8C14285334DE000F79BB /* Preview Assets.xcassets */; };
-		0D9E8C17285334DE000F79BB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C16285334DE000F79BB /* Persistence.swift */; };
 		0D9E8C1A285334DE000F79BB /* tipjar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C18285334DE000F79BB /* tipjar.xcdatamodeld */; };
 		0D9E8C24285334DE000F79BB /* tipjarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C23285334DE000F79BB /* tipjarTests.swift */; };
 		0D9E8C2E285334DE000F79BB /* tipjarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C2D285334DE000F79BB /* tipjarUITests.swift */; };
@@ -24,7 +27,7 @@
 		0DC7425E2854BC890035167E /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425D2854BC890035167E /* Image+Extensions.swift */; };
 		0DC742602854BD130035167E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425F2854BD130035167E /* CheckBox.swift */; };
 		0DC742622854C4760035167E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742612854C4760035167E /* HomeView.swift */; };
-		0DC742642854D9B10035167E /* SectionLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742632854D9B10035167E /* SectionLabelView.swift */; };
+		0DC742642854D9B10035167E /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742632854D9B10035167E /* LabelView.swift */; };
 		0DC742662854DA8A0035167E /* roboto.medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC742652854DA8A0035167E /* roboto.medium.ttf */; };
 		0DC742682854DB170035167E /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742672854DB170035167E /* CGFloat+Extensions.swift */; };
 		0DC7426A2854E91E0035167E /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742692854E91E0035167E /* SaveButtonView.swift */; };
@@ -35,6 +38,7 @@
 		0DC742742855D54E0035167E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742732855D54E0035167E /* Date+Extensions.swift */; };
 		0DC742762855EF0D0035167E /* SavedItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742752855EF0D0035167E /* SavedItemDetailView.swift */; };
 		0DC742782855FDEF0035167E /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742772855FDEF0035167E /* ZoomableImageView.swift */; };
+		0DC7427A28560D730035167E /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7427928560D730035167E /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +59,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D8D2A24285696B100982C63 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		0D8D2A2E2856A16100982C63 /* TipEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TipEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0D8D2A2F2856A16100982C63 /* TipEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TipEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0D8D2A322856C39C00982C63 /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
 		0D9E8C0A285334D5000F79BB /* tipjar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipjar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9E8C0D285334D5000F79BB /* tipjarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipjarApp.swift; sourceTree = "<group>"; };
 		0D9E8C0F285334D5000F79BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0D9E8C11285334DE000F79BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D9E8C14285334DE000F79BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0D9E8C16285334DE000F79BB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0D9E8C19285334DE000F79BB /* tipjar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tipjar.xcdatamodel; sourceTree = "<group>"; };
 		0D9E8C1F285334DE000F79BB /* tipjarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tipjarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9E8C23285334DE000F79BB /* tipjarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipjarTests.swift; sourceTree = "<group>"; };
@@ -76,7 +83,7 @@
 		0DC7425D2854BC890035167E /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		0DC7425F2854BD130035167E /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		0DC742612854C4760035167E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0DC742632854D9B10035167E /* SectionLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabelView.swift; sourceTree = "<group>"; };
+		0DC742632854D9B10035167E /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		0DC742652854DA8A0035167E /* roboto.medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.medium.ttf; sourceTree = "<group>"; };
 		0DC742672854DB170035167E /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		0DC742692854E91E0035167E /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
@@ -87,6 +94,7 @@
 		0DC742732855D54E0035167E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		0DC742752855EF0D0035167E /* SavedItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemDetailView.swift; sourceTree = "<group>"; };
 		0DC742772855FDEF0035167E /* ZoomableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableImageView.swift; sourceTree = "<group>"; };
+		0DC7427928560D730035167E /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				0DC7425A2854A2280035167E /* Info.plist */,
+				0DC742B6285636990035167E /* Persistence */,
 				0DC742562854A14E0035167E /* Resources */,
 				0DC7424D285496F80035167E /* UI */,
 				0D9E8C0D285334D5000F79BB /* tipjarApp.swift */,
 				0D9E8C0F285334D5000F79BB /* ContentView.swift */,
 				0D9E8C11285334DE000F79BB /* Assets.xcassets */,
-				0D9E8C16285334DE000F79BB /* Persistence.swift */,
 				0D9E8C18285334DE000F79BB /* tipjar.xcdatamodeld */,
 				0D9E8C13285334DE000F79BB /* Preview Content */,
 				0DC7426B285509530035167E /* Localizable.strings */,
@@ -182,6 +190,7 @@
 				0DC7425128549EE90035167E /* Extensions */,
 				0DC7424E285497050035167E /* Sub Views */,
 				0DC742612854C4760035167E /* HomeView.swift */,
+				0D8D2A322856C39C00982C63 /* HomeView+ViewModel.swift */,
 				0DC7426F2855CCCB0035167E /* HistoryView.swift */,
 				0DC742752855EF0D0035167E /* SavedItemDetailView.swift */,
 			);
@@ -194,10 +203,11 @@
 				0DC7424F285497380035167E /* BorderedInputView.swift */,
 				0DC7425B2854B02F0035167E /* AmountChangeButtonView.swift */,
 				0DC7425F2854BD130035167E /* CheckBox.swift */,
-				0DC742632854D9B10035167E /* SectionLabelView.swift */,
+				0DC742632854D9B10035167E /* LabelView.swift */,
 				0DC742692854E91E0035167E /* SaveButtonView.swift */,
 				0DC742712855CD950035167E /* HistoryItemView.swift */,
 				0DC742772855FDEF0035167E /* ZoomableImageView.swift */,
+				0DC7427928560D730035167E /* ImagePickerView.swift */,
 			);
 			path = "Sub Views";
 			sourceTree = "<group>";
@@ -230,6 +240,16 @@
 				0DC742652854DA8A0035167E /* roboto.medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0DC742B6285636990035167E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0D8D2A24285696B100982C63 /* DataController.swift */,
+				0D8D2A2E2856A16100982C63 /* TipEntry+CoreDataClass.swift */,
+				0D8D2A2F2856A16100982C63 /* TipEntry+CoreDataProperties.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,21 +387,25 @@
 			files = (
 				0DC7425E2854BC890035167E /* Image+Extensions.swift in Sources */,
 				0DC742722855CD950035167E /* HistoryItemView.swift in Sources */,
+				0D8D2A312856A16100982C63 /* TipEntry+CoreDataProperties.swift in Sources */,
+				0D8D2A332856C39C00982C63 /* HomeView+ViewModel.swift in Sources */,
 				0DC742682854DB170035167E /* CGFloat+Extensions.swift in Sources */,
 				0DC7425C2854B02F0035167E /* AmountChangeButtonView.swift in Sources */,
-				0D9E8C17285334DE000F79BB /* Persistence.swift in Sources */,
+				0DC7427A28560D730035167E /* ImagePickerView.swift in Sources */,
 				0D9E8C1A285334DE000F79BB /* tipjar.xcdatamodeld in Sources */,
 				0DC7426A2854E91E0035167E /* SaveButtonView.swift in Sources */,
 				0DC742602854BD130035167E /* CheckBox.swift in Sources */,
 				0DC742622854C4760035167E /* HomeView.swift in Sources */,
 				0DC742782855FDEF0035167E /* ZoomableImageView.swift in Sources */,
 				0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */,
+				0D8D2A302856A16100982C63 /* TipEntry+CoreDataClass.swift in Sources */,
+				0D8D2A25285696B100982C63 /* DataController.swift in Sources */,
 				0DC742702855CCCB0035167E /* HistoryView.swift in Sources */,
 				0DC742742855D54E0035167E /* Date+Extensions.swift in Sources */,
 				0DC7426E2855096B0035167E /* String+Localization.swift in Sources */,
 				0DC742552854A0340035167E /* Font+Extensions.swift in Sources */,
 				0DC74250285497380035167E /* BorderedInputView.swift in Sources */,
-				0DC742642854D9B10035167E /* SectionLabelView.swift in Sources */,
+				0DC742642854D9B10035167E /* LabelView.swift in Sources */,
 				0DC742762855EF0D0035167E /* SavedItemDetailView.swift in Sources */,
 				0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */,
 				0DC7425328549EF70035167E /* Color+Extensions.swift in Sources */,
@@ -547,6 +571,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tipjar/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "TipJar needs the camera to take pictures of receipts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -577,6 +602,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tipjar/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "TipJar needs the camera to take pictures of receipts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

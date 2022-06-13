@@ -10,16 +10,19 @@ import SwiftUI
 struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, RightLabel: View {
     @ViewBuilder var leftLabel: LeftLabel
     @ViewBuilder var rightLabel: RightLabel
-    @State var inputString: String
-    @Binding private var inputValue: Double
+    @Binding var inputString: String
+    @Binding var inputValue: Double
+    @Binding var validateInput: Bool
+    @State var borderColor: Color = Color.from(.borderGray)
     var placeHolder: String
-    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel, @ViewBuilder rightLabel: () -> RightLabel) {
+    
+    init(inputValue: Binding<Double>, inputString: Binding<String>, placeHolder: String = AppStrings.oneHundred, validateInput: Binding<Bool>, @ViewBuilder leftLabel: () -> LeftLabel, @ViewBuilder rightLabel: () -> RightLabel) {
         self.leftLabel = leftLabel()
         self.rightLabel = rightLabel()
         self.placeHolder = placeHolder
-        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
-        _inputString = State(initialValue: initialValue)
+        _inputString = inputString
         _inputValue = inputValue
+        _validateInput = validateInput
     }
     
     var body: some View {
@@ -47,6 +50,10 @@ struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, Rig
                     }
                     inputValue = Double(inputString) ?? 0
                 }
+                .onChange(of: validateInput) { newValue in
+                    validate()
+                    validateInput = false
+                }
             Spacer()
             rightLabel
         }
@@ -54,37 +61,47 @@ struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, Rig
         .frame(height: .Dimensions.mainInputHeight)
         .overlay(
             RoundedRectangle(cornerRadius: .CornerRadius.mainInputCornerRadius)
-                .stroke(Color.from(.borderGray), lineWidth: .Borders.lineWidth)
+                .stroke(borderColor, lineWidth: .Borders.lineWidth)
                 .shadow(color: Color.from(.borderGray), radius: .Borders.shadowRadius, x: .Borders.shadowOffset, y: .Borders.shadowOffset)
         )
+    }
+    
+    func validate() {
+        if !inputString.isEmpty && inputValue > 0 {
+            return
+        }
+        borderColor = .red
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            borderColor = Color.from(.borderGray)
+        }
     }
 }
 
 extension BorderedInputView where RightLabel == EmptyView   {
-    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder leftLabel: () -> LeftLabel) {
+    init(inputValue: Binding<Double>, inputString: Binding<String>, placeHolder: String = AppStrings.oneHundred, validateInput: Binding<Bool>, @ViewBuilder leftLabel: () -> LeftLabel) {
         self.leftLabel = leftLabel()
         self.rightLabel = EmptyView()
         self.placeHolder = placeHolder
-        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
-        _inputString = State(initialValue: initialValue)
+        _inputString = inputString
         _inputValue = inputValue
+        _validateInput = validateInput
     }
 }
 
 extension BorderedInputView where LeftLabel == EmptyView {
-    init(inputValue: Binding<Double>, placeHolder: String = AppStrings.oneHundred, @ViewBuilder rightLabel: () -> RightLabel) {
+    init(inputValue: Binding<Double>, inputString: Binding<String>, placeHolder: String = AppStrings.oneHundred, validateInput: Binding<Bool>, @ViewBuilder rightLabel: () -> RightLabel) {
         self.rightLabel = rightLabel()
         self.leftLabel = EmptyView()
         self.placeHolder = placeHolder
-        let initialValue = inputValue.wrappedValue > 0 ? inputValue.wrappedValue.description : ""
-        _inputString = State(initialValue: initialValue)
+        _inputString = inputString
         _inputValue = inputValue
+        _validateInput = validateInput
     }
 }
 
 struct BorderedInputView_Previews: PreviewProvider {
     static var previews: some View {
-        BorderedInputView(inputValue: .constant(20), rightLabel: {
+        BorderedInputView(inputValue: .constant(20), inputString: .constant(""), validateInput: .constant(false), rightLabel: {
             Text(AppStrings.percentSign)
                 .font(Font.custom(from: .robotoMedium, size: .FontSize.homeMainLabel))
         })

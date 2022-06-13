@@ -14,10 +14,17 @@ enum TipJarImage: String {
     case sampleImage
     case backChevron
     case sampleReceipt
+    case textyImage
 }
 
 extension Image {
     static func from(_ tipJarImage: TipJarImage) -> Image {
         return Image(tipJarImage.rawValue)
+    }
+}
+
+extension UIImage {
+    static func from(_ tipJarImage: TipJarImage) -> UIImage? {
+        return UIImage(named: tipJarImage.rawValue)
     }
 }

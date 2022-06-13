@@ -17,6 +17,7 @@ enum AppStrings: String {
     case percentTip = "percent_tip"
     case tip = "tip"
     case savedPayments = "saved_payments"
+    case pinchToZoom = "pinch_to_zoom"
     
     var localized: String {
         return NSLocalizedString(self.rawValue, comment: "")

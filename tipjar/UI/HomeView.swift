@@ -7,43 +7,33 @@
 
 import SwiftUI
 
-extension HomeView {
-    @MainActor class ViewModel: ObservableObject {
-        @Published var amount: Double = 0
-        @Published var numberOfPeople: Int = 1
-        @Published var percentTip: Double = 10
-        @Published private(set) var totalTip: Double = 10
-        @Published private(set) var perPersonTip: Double = 10
-        @Published var takeReceiptOfPhoto: Bool = false
-        
-        func computeTotal() {
-            let total = percentTip * amount * Double(numberOfPeople) / 100
-            let perPersonTip = percentTip * amount / 100
-            self.totalTip = total
-            self.perPersonTip = perPersonTip
-        }
-    }
-}
-
 struct HomeView: View {
     @StateObject var viewModel: ViewModel = ViewModel()
     @State private var goToHistory = false
+    @State var openCamera: Bool = false
+    
+    var history: [HistoryItem] = []
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \TipEntry.date, ascending: true)]) var savedEntries: FetchedResults<TipEntry>
+    @Environment(\.managedObjectContext) var context
+    
     
     var body: some View {
         NavigationView {
             VStack {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        SectionLabelView(title: AppStrings.enterAmount.localized)
-                        
-                        BorderedInputView(inputValue: $viewModel.amount, leftLabel: {
-                            SectionLabelView(title: AppStrings.dollarSign, type: .major)
+                        LabelView(title: AppStrings.enterAmount.localized)
+
+                        BorderedInputView(inputValue: $viewModel.amount, inputString: $viewModel.amountString, validateInput: $viewModel.showValidationErrors, leftLabel: {
+                            LabelView(title: AppStrings.dollarSign, type: .major)
                         })
-                        .onReceive(viewModel.$amount, perform: { amount in
+                        .onReceive(viewModel.$amount, perform: { _ in
                             viewModel.computeTotal()
                         })
                         .padding(.bottom, .Padding.defaultPadding)
-                        SectionLabelView(title: AppStrings.howManyPeople.localized)
+                        
+                        LabelView(title: AppStrings.howManyPeople.localized)
                         
                         HStack {
                             AmountChangeButtonView(type: .increment, value: $viewModel.numberOfPeople)
@@ -60,8 +50,8 @@ struct HomeView: View {
                         Text(AppStrings.percentTip.localized)
                             .padding(.bottom, .Padding.defaultPadding)
                         
-                        BorderedInputView(inputValue: $viewModel.percentTip, placeHolder: AppStrings.ten, rightLabel: {
-                            SectionLabelView(title: AppStrings.percentSign, type: .major)
+                        BorderedInputView(inputValue: $viewModel.percentTip, inputString: $viewModel.percentTipString, placeHolder: AppStrings.ten, validateInput: $viewModel.showValidationErrors, rightLabel: {
+                            LabelView(title: AppStrings.percentSign, type: .major)
                         })
                         .padding(.bottom, .Padding.defaultPadding)
                         .onReceive(viewModel.$percentTip, perform: { _ in
@@ -70,16 +60,16 @@ struct HomeView: View {
                         
                         VStack {
                             HStack {
-                                SectionLabelView(title: AppStrings.totalTip.localized)
+                                LabelView(title: AppStrings.totalTip.localized)
                                     Spacer()
-                                SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
+                                LabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
                                         .padding(.bottom, .Padding.defaultPadding)
                             }
                             HStack {
-                                SectionLabelView(title: AppStrings.perPerson.localized, type: .major)
+                                LabelView(title: AppStrings.perPerson.localized, type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
                                     Spacer()
-                                SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
+                                LabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
                             }
                             .padding(.bottom, .Padding.defaultPadding)
@@ -87,7 +77,7 @@ struct HomeView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(
-                        NavigationLink(destination: HistoryView(), isActive: $goToHistory) {
+                        NavigationLink(destination: HistoryView(historyItems: savedEntries), isActive: $goToHistory) {
                           EmptyView()
                         }
                     )
@@ -119,19 +109,46 @@ struct HomeView: View {
                 VStack(alignment: .leading){
                     HStack {
                         CheckBox(checked: $viewModel.takeReceiptOfPhoto)
-                        SectionLabelView(title: AppStrings.takePhoto.localized)
+                        LabelView(title: AppStrings.takePhoto.localized)
                             .padding(.leading, .Padding.defaultPadding)
                     }
                     
-                    SaveButtonView()
+                    SaveButtonView(saveAction: saveReceipt)
                 }
             }
             .padding(.Padding.sidePadding)
+            .sheet(isPresented: $openCamera) {
+                imagePicker
+            }
+            .onAppear {
+                viewModel.context = context
+            }
         }
     }
     
     func showHistory() {
         goToHistory = true
+    }
+    
+    func saveReceipt() {
+        if(!viewModel.validateInputs()) {
+            viewModel.showValidationErrors = true
+            return
+        }
+        if(viewModel.takeReceiptOfPhoto) {
+            openCamera = true
+        } else {
+            self.viewModel.addHistoryItem()
+            showHistory()
+        }
+    }
+    
+    var imagePicker: some View {
+        ImagePickerView(sourceType: .camera) {image in
+            self.viewModel.imageData = image.jpegData(compressionQuality: .Conversions.imageCompression)
+            self.viewModel.addHistoryItem()
+            showHistory()
+        }
     }
 }
 
