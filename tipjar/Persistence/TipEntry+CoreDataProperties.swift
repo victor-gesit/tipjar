@@ -20,9 +20,11 @@ extension TipEntry {
     @NSManaged public var id: UUID
     @NSManaged public var imageData: Data?
     @NSManaged public var tip: Double
+    @NSManaged public var currency: String
 
     var historyItem: HistoryItem {
-        return HistoryItem(id: id, date: date, amount: amount, tip: tip, imageData: imageData)
+        let currency = Currency(rawValue: currency) ?? .dollar
+        return HistoryItem(id: id, date: date, amount: amount, tip: tip, imageData: imageData, currency: currency)
     }
 }
 

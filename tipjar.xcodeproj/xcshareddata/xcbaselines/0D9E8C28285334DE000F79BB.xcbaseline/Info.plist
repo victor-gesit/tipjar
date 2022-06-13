@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>runDestinationsByUUID</key>
+	<dict>
+		<key>FE9EA5C4-8C3A-4C4F-A440-5A6A61B8AF43</key>
+		<dict>
+			<key>targetArchitecture</key>
+			<string>arm64</string>
+			<key>targetDevice</key>
+			<dict>
+				<key>modelCode</key>
+				<string>iPhone13,3</string>
+				<key>platformIdentifier</key>
+				<string>&lt;unknown&gt;</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

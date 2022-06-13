@@ -12,8 +12,10 @@
 		0D8D2A312856A16100982C63 /* TipEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A2F2856A16100982C63 /* TipEntry+CoreDataProperties.swift */; };
 		0D8D2A332856C39C00982C63 /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A322856C39C00982C63 /* HomeView+ViewModel.swift */; };
 		0D8D2A372857678B00982C63 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D2A362857678B00982C63 /* HistoryItem.swift */; };
+		0D8D2A382857C00000982C63 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D2A3A2857C00000982C63 /* Localizable.strings */; };
+		0D8D2A3C2857C4A100982C63 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7426D2855096B0035167E /* String+Localization.swift */; };
+		0D8D2A3D2857C59B00982C63 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D2A3A2857C00000982C63 /* Localizable.strings */; };
 		0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C0D285334D5000F79BB /* tipjarApp.swift */; };
-		0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C0F285334D5000F79BB /* ContentView.swift */; };
 		0D9E8C12285334DE000F79BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E8C11285334DE000F79BB /* Assets.xcassets */; };
 		0D9E8C15285334DE000F79BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E8C14285334DE000F79BB /* Preview Assets.xcassets */; };
 		0D9E8C1A285334DE000F79BB /* tipjar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E8C18285334DE000F79BB /* tipjar.xcdatamodeld */; };
@@ -32,7 +34,6 @@
 		0DC742662854DA8A0035167E /* roboto.medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC742652854DA8A0035167E /* roboto.medium.ttf */; };
 		0DC742682854DB170035167E /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742672854DB170035167E /* CGFloat+Extensions.swift */; };
 		0DC7426A2854E91E0035167E /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742692854E91E0035167E /* SaveButtonView.swift */; };
-		0DC7426C285509530035167E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DC7426B285509530035167E /* Localizable.strings */; };
 		0DC7426E2855096B0035167E /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7426D2855096B0035167E /* String+Localization.swift */; };
 		0DC742702855CCCB0035167E /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7426F2855CCCB0035167E /* HistoryView.swift */; };
 		0DC742722855CD950035167E /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742712855CD950035167E /* HistoryItemView.swift */; };
@@ -65,9 +66,10 @@
 		0D8D2A2F2856A16100982C63 /* TipEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TipEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0D8D2A322856C39C00982C63 /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
 		0D8D2A362857678B00982C63 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		0D8D2A392857C00000982C63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D8D2A3B2857C03200982C63 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0D9E8C0A285334D5000F79BB /* tipjar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipjar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9E8C0D285334D5000F79BB /* tipjarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipjarApp.swift; sourceTree = "<group>"; };
-		0D9E8C0F285334D5000F79BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0D9E8C11285334DE000F79BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D9E8C14285334DE000F79BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0D9E8C19285334DE000F79BB /* tipjar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tipjar.xcdatamodel; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		0DC742652854DA8A0035167E /* roboto.medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.medium.ttf; sourceTree = "<group>"; };
 		0DC742672854DB170035167E /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		0DC742692854E91E0035167E /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
-		0DC7426B285509530035167E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0DC7426D2855096B0035167E /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		0DC7426F2855CCCB0035167E /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		0DC742712855CD950035167E /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
@@ -161,11 +162,10 @@
 				0DC742562854A14E0035167E /* Resources */,
 				0DC7424D285496F80035167E /* UI */,
 				0D9E8C0D285334D5000F79BB /* tipjarApp.swift */,
-				0D9E8C0F285334D5000F79BB /* ContentView.swift */,
 				0D9E8C11285334DE000F79BB /* Assets.xcassets */,
 				0D9E8C18285334DE000F79BB /* tipjar.xcdatamodeld */,
 				0D9E8C13285334DE000F79BB /* Preview Content */,
-				0DC7426B285509530035167E /* Localizable.strings */,
+				0D8D2A3A2857C00000982C63 /* Localizable.strings */,
 			);
 			path = tipjar;
 			sourceTree = "<group>";
@@ -349,6 +349,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 0D9E8C01285334D5000F79BB;
 			productRefGroup = 0D9E8C0B285334D5000F79BB /* Products */;
@@ -367,7 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DC7426C285509530035167E /* Localizable.strings in Resources */,
+				0D8D2A382857C00000982C63 /* Localizable.strings in Resources */,
 				0D9E8C15285334DE000F79BB /* Preview Assets.xcassets in Resources */,
 				0DC742662854DA8A0035167E /* roboto.medium.ttf in Resources */,
 				0D9E8C12285334DE000F79BB /* Assets.xcassets in Resources */,
@@ -386,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8D2A3D2857C59B00982C63 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +410,6 @@
 				0DC742602854BD130035167E /* CheckBox.swift in Sources */,
 				0DC742622854C4760035167E /* HomeView.swift in Sources */,
 				0DC742782855FDEF0035167E /* ZoomableImageView.swift in Sources */,
-				0D9E8C10285334D5000F79BB /* ContentView.swift in Sources */,
 				0D8D2A302856A16100982C63 /* TipEntry+CoreDataClass.swift in Sources */,
 				0D8D2A25285696B100982C63 /* DataController.swift in Sources */,
 				0DC742702855CCCB0035167E /* HistoryView.swift in Sources */,
@@ -436,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8D2A3C2857C4A100982C63 /* String+Localization.swift in Sources */,
 				0D9E8C30285334DE000F79BB /* tipjarUITestsLaunchTests.swift in Sources */,
 				0D9E8C2E285334DE000F79BB /* tipjarUITests.swift in Sources */,
 			);
@@ -456,11 +458,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		0D8D2A3A2857C00000982C63 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D8D2A392857C00000982C63 /* en */,
+				0D8D2A3B2857C03200982C63 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		0D9E8C31285334DE000F79BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -521,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

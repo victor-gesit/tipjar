@@ -16,11 +16,11 @@ struct HistoryItemView: View {
                 LabelView(title: item.date.formatted)
                     .frame(alignment: .leading)
                 HStack {
-                    LabelView(title: "\(AppStrings.dollarSign)\(item.amount.to2Dp)", type: .major)
+                    LabelView(title: "\(item.currency.symbol)\(item.amount.to2Dp)", type: .major)
                     if(!showImage) {
                         Spacer()
                     }
-                    LabelView(title: "\(AppStrings.tip.localized): \(AppStrings.dollarSign)\(item.tip.to2Dp)")
+                    LabelView(title: "\(AppStrings.tip.localized): \(item.currency.symbol)\(item.tip.to2Dp)")
                         .foregroundColor(Color.from(.lightGray))
                 }
             }

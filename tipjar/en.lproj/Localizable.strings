@@ -16,3 +16,10 @@
 "tip" = "Tip";
 "saved_payments" = "SAVED PAYMENTS";
 "pinch_to_zoom" = "Pinch image to zoom";
+"no_tips_recorded" = "No Tips\nRecorded";
+"dollar_symbol" = "$";
+"pounds_symbol" = "£";
+"euros_symbol" = "€";
+"dollar_string" = "dollar";
+"pound_string" = "pounds";
+"euros_string" = "euros";

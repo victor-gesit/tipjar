@@ -20,6 +20,8 @@ extension HomeView {
         @Published var takeReceiptOfPhoto: Bool = false
         @Published var imageData: Data?
         @Published var showValidationErrors: Bool = false
+        @Published var currency: Currency = .dollar
+        @Published var changeCurrency: Bool = false
         
         var context: NSManagedObjectContext?
         
@@ -43,6 +45,7 @@ extension HomeView {
             item.amount = amount
             item.tip = totalTip
             item.imageData = imageData
+            item.currency = currency.rawValue
             
             try? context.save()
             resetInputs()
@@ -56,9 +59,35 @@ extension HomeView {
             self.imageData = nil
         }
         
+        func changeCurrency(to: Currency) {
+            self.currency = currency
+        }
+        
         func validateInputs() -> Bool {
             let inputsValid = !amountString.isEmpty && amount > 0 && !percentTipString.isEmpty && percentTip > 0
             return inputsValid
+        }
+    }
+}
+
+enum Currency: String, CaseIterable {
+    case dollar
+    case pounds
+    case euros
+    
+    var symbol: String {
+        switch self {
+        case .dollar: return AppStrings.dollarSymbol.localized
+        case .pounds: return AppStrings.poundsSymbol.localized
+        case .euros: return AppStrings.euroSymbol.localized
+        }
+    }
+    
+    var localized: String {
+        switch self {
+        case .dollar: return AppStrings.dollarString.localized
+        case .pounds: return AppStrings.poundsString.localized
+        case .euros: return AppStrings.eurosString.localized
         }
     }
 }

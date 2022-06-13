@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  tipjar
+
+  Created by Victor Idongesit on 11/06/2022.
+  
+*/
+
+"enter_amount" = "金額を入力します";
+"how_many_people" = "何人ですか？";
+"total_tip" = "トータルチップ";
+"percent_tip" = "％ ヒント";
+"per_person" = "一人当たり";
+"take_photo_of_receipt" = "領収書の写真を撮る";
+"save_payment" = "支払いを節約";
+"tip" = "ヒント";
+"saved_payments" = "保存された支払い";
+"pinch_to_zoom" = "画像をピンチしてズーム";
+"no_tips_recorded" = "ヒントなし\n記録";
+"dollar_symbol" = "$";
+"pounds_symbol" = "££";
+"euros_symbol" = "€€";
+"dollar_string" = "ドル";
+"pound_string" = "ポンド";
+"euros_string" = "ユーロ";

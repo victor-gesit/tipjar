@@ -16,7 +16,6 @@ class tipjarUITests: XCTestCase {
         let decrementButton = app.buttons["-"]
         let scrollViewsQuery = XCUIApplication().scrollViews
         let savePaymentButton = app.buttons["Save Payment"]
-        let tipPercentText = scrollViewsQuery.otherElements.textFields["10"]
         let totalTipText = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "$60.0").element
         let perPersonTipText = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "$20.0").element
         let tipLabel = scrollViewsQuery.otherElements.children(matching: .staticText).matching(identifier: "Tip: $60.0").element
@@ -33,10 +32,6 @@ class tipjarUITests: XCTestCase {
         
         enterAmountElement.tap()
         
-        tipPercentText.tap()
-        app.clearTextOnElement(tipPercentText)
-        tipPercentText.typeText("10")
-        
         sleep(1)
         enterAmountElement.tap()
         
@@ -50,21 +45,5 @@ class tipjarUITests: XCTestCase {
         
         XCTAssertTrue(tipLabel.waitForExistence(timeout: 2)) // Visible on next page
         
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
-}
-
-extension XCUIApplication {
-    func clearTextOnElement(_ element: XCUIElement) {
-        element.doubleTap()
-        menuItems["Cut"].tap()
     }
 }

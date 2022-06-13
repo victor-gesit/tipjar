@@ -72,7 +72,9 @@ struct BorderedInputView<LeftLabel, RightLabel>: View where LeftLabel: View, Rig
         }
         borderColor = .red
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            borderColor = Color.from(.borderGray)
+            withAnimation {
+                borderColor = Color.from(.borderGray)
+            }
         }
     }
 }

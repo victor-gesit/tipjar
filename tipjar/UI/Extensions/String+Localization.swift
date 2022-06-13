@@ -18,6 +18,13 @@ enum AppStrings: String {
     case tip = "tip"
     case savedPayments = "saved_payments"
     case pinchToZoom = "pinch_to_zoom"
+    case noTipsRecorded = "no_tips_recorded"
+    case dollarSymbol = "dollar_symbol"
+    case poundsSymbol = "pounds_symbol"
+    case euroSymbol = "euros_symbol"
+    case dollarString = "dollar_string"
+    case poundsString = "pound_string"
+    case eurosString = "euros_string"
     
     var localized: String {
         return NSLocalizedString(self.rawValue, comment: "")
@@ -27,6 +34,5 @@ enum AppStrings: String {
     static let ten = "10"
     static let oneHundred = "100.00"
     static let percentSign = "%"
-    static let dollarSign = "$"
     static let numbers = "9876543210."
 }
