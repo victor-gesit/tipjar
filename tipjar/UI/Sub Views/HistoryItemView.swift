@@ -13,14 +13,14 @@ struct HistoryItemView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: .Padding.historyItemSpacing) {
-                SectionLabelView(title: item.date.formatted)
+                LabelView(title: item.date.formatted)
                     .frame(alignment: .leading)
                 HStack {
-                    SectionLabelView(title: "\(AppStrings.dollarSign)\(item.amount.to2Dp)", type: .major)
+                    LabelView(title: "\(AppStrings.dollarSign)\(item.amount.to2Dp)", type: .major)
                     if(!showImage) {
                         Spacer()
                     }
-                    SectionLabelView(title: "\(AppStrings.tip.localized): \(AppStrings.dollarSign)\(item.tip.to2Dp)")
+                    LabelView(title: "\(AppStrings.tip.localized): \(AppStrings.dollarSign)\(item.tip.to2Dp)")
                         .foregroundColor(Color.from(.lightGray))
                 }
             }

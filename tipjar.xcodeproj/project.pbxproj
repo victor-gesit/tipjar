@@ -27,7 +27,7 @@
 		0DC7425E2854BC890035167E /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425D2854BC890035167E /* Image+Extensions.swift */; };
 		0DC742602854BD130035167E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7425F2854BD130035167E /* CheckBox.swift */; };
 		0DC742622854C4760035167E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742612854C4760035167E /* HomeView.swift */; };
-		0DC742642854D9B10035167E /* SectionLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742632854D9B10035167E /* SectionLabelView.swift */; };
+		0DC742642854D9B10035167E /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742632854D9B10035167E /* LabelView.swift */; };
 		0DC742662854DA8A0035167E /* roboto.medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC742652854DA8A0035167E /* roboto.medium.ttf */; };
 		0DC742682854DB170035167E /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742672854DB170035167E /* CGFloat+Extensions.swift */; };
 		0DC7426A2854E91E0035167E /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC742692854E91E0035167E /* SaveButtonView.swift */; };
@@ -83,7 +83,7 @@
 		0DC7425D2854BC890035167E /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		0DC7425F2854BD130035167E /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		0DC742612854C4760035167E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0DC742632854D9B10035167E /* SectionLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabelView.swift; sourceTree = "<group>"; };
+		0DC742632854D9B10035167E /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		0DC742652854DA8A0035167E /* roboto.medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.medium.ttf; sourceTree = "<group>"; };
 		0DC742672854DB170035167E /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		0DC742692854E91E0035167E /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				0DC7424F285497380035167E /* BorderedInputView.swift */,
 				0DC7425B2854B02F0035167E /* AmountChangeButtonView.swift */,
 				0DC7425F2854BD130035167E /* CheckBox.swift */,
-				0DC742632854D9B10035167E /* SectionLabelView.swift */,
+				0DC742632854D9B10035167E /* LabelView.swift */,
 				0DC742692854E91E0035167E /* SaveButtonView.swift */,
 				0DC742712855CD950035167E /* HistoryItemView.swift */,
 				0DC742772855FDEF0035167E /* ZoomableImageView.swift */,
@@ -405,7 +405,7 @@
 				0DC7426E2855096B0035167E /* String+Localization.swift in Sources */,
 				0DC742552854A0340035167E /* Font+Extensions.swift in Sources */,
 				0DC74250285497380035167E /* BorderedInputView.swift in Sources */,
-				0DC742642854D9B10035167E /* SectionLabelView.swift in Sources */,
+				0DC742642854D9B10035167E /* LabelView.swift in Sources */,
 				0DC742762855EF0D0035167E /* SavedItemDetailView.swift in Sources */,
 				0D9E8C0E285334D5000F79BB /* tipjarApp.swift in Sources */,
 				0DC7425328549EF70035167E /* Color+Extensions.swift in Sources */,

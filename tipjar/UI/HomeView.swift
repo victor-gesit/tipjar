@@ -10,8 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: ViewModel = ViewModel()
     @State private var goToHistory = false
-    @State var takePicture: Bool = false
-    @State var receiptImage: UIImage?
+    @State var openCamera: Bool = false
     
     var history: [HistoryItem] = []
     @FetchRequest(
@@ -24,16 +23,17 @@ struct HomeView: View {
             VStack {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        SectionLabelView(title: AppStrings.enterAmount.localized)
-                        
-                        BorderedInputView(inputValue: $viewModel.amount, inputString: $viewModel.amountString, leftLabel: {
-                            SectionLabelView(title: AppStrings.dollarSign, type: .major)
+                        LabelView(title: AppStrings.enterAmount.localized)
+
+                        BorderedInputView(inputValue: $viewModel.amount, inputString: $viewModel.amountString, validateInput: $viewModel.showValidationErrors, leftLabel: {
+                            LabelView(title: AppStrings.dollarSign, type: .major)
                         })
                         .onReceive(viewModel.$amount, perform: { _ in
                             viewModel.computeTotal()
                         })
                         .padding(.bottom, .Padding.defaultPadding)
-                        SectionLabelView(title: AppStrings.howManyPeople.localized)
+                        
+                        LabelView(title: AppStrings.howManyPeople.localized)
                         
                         HStack {
                             AmountChangeButtonView(type: .increment, value: $viewModel.numberOfPeople)
@@ -50,8 +50,8 @@ struct HomeView: View {
                         Text(AppStrings.percentTip.localized)
                             .padding(.bottom, .Padding.defaultPadding)
                         
-                        BorderedInputView(inputValue: $viewModel.percentTip, inputString: $viewModel.percentTipString, placeHolder: AppStrings.ten, rightLabel: {
-                            SectionLabelView(title: AppStrings.percentSign, type: .major)
+                        BorderedInputView(inputValue: $viewModel.percentTip, inputString: $viewModel.percentTipString, placeHolder: AppStrings.ten, validateInput: $viewModel.showValidationErrors, rightLabel: {
+                            LabelView(title: AppStrings.percentSign, type: .major)
                         })
                         .padding(.bottom, .Padding.defaultPadding)
                         .onReceive(viewModel.$percentTip, perform: { _ in
@@ -60,16 +60,16 @@ struct HomeView: View {
                         
                         VStack {
                             HStack {
-                                SectionLabelView(title: AppStrings.totalTip.localized)
+                                LabelView(title: AppStrings.totalTip.localized)
                                     Spacer()
-                                SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
+                                LabelView(title: "\(AppStrings.dollarSign)\(viewModel.totalTip.to2Dp)")
                                         .padding(.bottom, .Padding.defaultPadding)
                             }
                             HStack {
-                                SectionLabelView(title: AppStrings.perPerson.localized, type: .major)
+                                LabelView(title: AppStrings.perPerson.localized, type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
                                     Spacer()
-                                SectionLabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
+                                LabelView(title: "\(AppStrings.dollarSign)\(viewModel.perPersonTip.to2Dp)", type: .major)
                                     .padding(.bottom, .Padding.defaultPadding)
                             }
                             .padding(.bottom, .Padding.defaultPadding)
@@ -109,7 +109,7 @@ struct HomeView: View {
                 VStack(alignment: .leading){
                     HStack {
                         CheckBox(checked: $viewModel.takeReceiptOfPhoto)
-                        SectionLabelView(title: AppStrings.takePhoto.localized)
+                        LabelView(title: AppStrings.takePhoto.localized)
                             .padding(.leading, .Padding.defaultPadding)
                     }
                     
@@ -117,7 +117,7 @@ struct HomeView: View {
                 }
             }
             .padding(.Padding.sidePadding)
-            .sheet(isPresented: $takePicture) {
+            .sheet(isPresented: $openCamera) {
                 imagePicker
             }
             .onAppear {
@@ -131,8 +131,12 @@ struct HomeView: View {
     }
     
     func saveReceipt() {
+        if(!viewModel.validateInputs()) {
+            viewModel.showValidationErrors = true
+            return
+        }
         if(viewModel.takeReceiptOfPhoto) {
-            takePicture = true
+            openCamera = true
         } else {
             self.viewModel.addHistoryItem()
             showHistory()
@@ -142,7 +146,6 @@ struct HomeView: View {
     var imagePicker: some View {
         ImagePickerView(sourceType: .camera) {image in
             self.viewModel.imageData = image.jpegData(compressionQuality: .Conversions.imageCompression)
-            self.receiptImage = image
             self.viewModel.addHistoryItem()
             showHistory()
         }

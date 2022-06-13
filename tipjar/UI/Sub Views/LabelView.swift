@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SectionLabelView: View {
+struct LabelView: View {
     var title: String
     var type: LabelType = .minor
     var body: some View {
@@ -23,6 +23,6 @@ struct SectionLabelView: View {
 
 struct SectionLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionLabelView(title: AppStrings.howManyPeople.localized)
+        LabelView(title: AppStrings.howManyPeople.localized)
     }
 }

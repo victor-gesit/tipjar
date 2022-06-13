@@ -19,6 +19,7 @@ extension HomeView {
         @Published private(set) var perPersonTip: Double = 10
         @Published var takeReceiptOfPhoto: Bool = false
         @Published var imageData: Data?
+        @Published var showValidationErrors: Bool = false
         
         @Published var history: [HistoryItem] = [HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem, HistoryItem.dummyItem]
         var context: NSManagedObjectContext?
@@ -52,6 +53,11 @@ extension HomeView {
             self.numberOfPeople = 1
             self.takeReceiptOfPhoto = false
             self.imageData = nil
+        }
+        
+        func validateInputs() -> Bool {
+            let inputsValid = !amountString.isEmpty && amount > 0 && !percentTipString.isEmpty && percentTip > 0
+            return inputsValid
         }
     }
 }

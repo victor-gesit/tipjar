@@ -53,12 +53,10 @@ struct HistoryView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.leading, .Padding.sidePadding)
-        .padding(.trailing, .Padding.sidePadding)
-        
+        .padding(.Padding.sidePadding)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                SectionLabelView(title: AppStrings.savedPayments.localized)
+                LabelView(title: AppStrings.savedPayments.localized)
             }
         }
         .navigationBarBackButtonHidden(true)

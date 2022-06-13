@@ -17,7 +17,7 @@ struct SavedItemDetailView: View {
             Spacer()
             VStack {
                 if let uiImage = item.uiImage {
-                    SectionLabelView(title: AppStrings.pinchToZoom.localized)
+                    LabelView(title: AppStrings.pinchToZoom.localized)
                         .foregroundColor(.white)
                     ZoomableImageView(image: uiImage)
                         .frame(width: .Dimensions.historyItemPreviewWidth, height: .Dimensions.historyItemPreviewHeight)
